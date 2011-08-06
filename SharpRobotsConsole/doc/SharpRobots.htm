@@ -32,6 +32,7 @@
         </style>
 	</head>
 	<body>
+        <!-- Source code formatted with http://www.manoli.net/csharpformat/format.aspx -->
 	    <h1>Sharp Robots</h1>
         <p>
            Copyright 2011 Fred A. Rosenbaum Jr.
@@ -114,7 +115,9 @@
 	        own robot program, then matching program against program.<br />
             <br />
 	        Sharp Robots consists of a C# compiler, and a battlefield display<br />
-	        (Console graphics and Windows Application).<br />
+	        (Console graphics and Windows Application).</p>
+        <p>
+	        <br />
 	        ******** TODO Explain compiler ************<br />
 	        The Sharp Robots C# compiler accepts a limited (but useful) subset of<br />
 	        the C# language.  <br />
@@ -163,9 +166,7 @@
         <br />
         <p>
 	        Sharp Robots is started from the Windows Command Console prompt:<br />
-            <br />
 	        SharpRobotsConsole robot-program-1.cs [robot-program-n.cs]<br />
-            <br />
 	        Valid options and parameters are:<br />
             <br />
 		        Path and file name of one or more C# source files<br />
@@ -208,6 +209,8 @@
 	        is south.  One degree below due east is 359.<br />
             <br />
             <br />
+            ********* TODO Fix below maybe replace with graphic *********<br />
+
                            315    0   45<br />
                                \  |  / <br />
                                 \ | /<br />
@@ -283,6 +286,8 @@
         <br />
         <br />
         <p>
+        ********* TODO Replace / fix below, maybe with graphic *********<br /><br />
+
                                                         (Status blocks)<br />
             (x=0,y=0)                      (x=999,y=0)<br />
             <br />
@@ -401,13 +406,13 @@
 		    Examples:<br />
         </p>
         <pre class="csharpcode">
-            d = Arena.Damage(<span class="kwrd">this</span>);         <span class="rem">// save current state</span>
-            ; ; ;                           <span class="rem">// other instructions</span>
-            <span class="kwrd">if</span> (d != Arena.Damage(<span class="kwrd">this</span>))    <span class="rem">// compare current state to prior state</span>
-            {
-                Arena.Drive(<span class="kwrd">this</span>, 90, 100); <span class="rem">// robot has been hit, start moving</span>
-                d = Arena.Damage(<span class="kwrd">this</span>);     <span class="rem">// get current damage again</span>
-            }
+           d = Arena.Damage(<span class="kwrd">this</span>);         <span class="rem">// save current state</span>
+           ; ; ;                           <span class="rem">// other instructions</span>
+           <span class="kwrd">if</span> (d != Arena.Damage(<span class="kwrd">this</span>))    <span class="rem">// compare current state to prior state</span>
+           {
+               Arena.Drive(<span class="kwrd">this</span>, 90, 100); <span class="rem">// robot has been hit, start moving</span>
+               d = Arena.Damage(<span class="kwrd">this</span>);     <span class="rem">// get current damage again</span>
+           }
         </pre>
 
         <a name="t18"><strong>Speed</strong></a>
@@ -418,13 +423,16 @@
 		    0-100.  Note that Speed() may not always be the same as the last<br />
 		    Drive(), because of acceleration and deceleration.<br />
 		    Examples:<br />
-			    Arena.Drive(this, 180, 100);	// start drive, due south<br />
-			    ; ; ;							// other instructions<br />
-			    if (Arena.Speed(this) == 0)		// check current speed<br />
-			    {<br />
-				    Arena.Drive(this, 0, 20);	// ran into the south wall, or another robot<br />
-			    }<br />
         </p>
+        <pre class="csharpcode">
+           Arena.Drive(<span class="kwrd">this</span>, 180, 100); 	<span class="rem">// start drive, due south</span>
+           ; ; ;				<span class="rem">// other instructions<br /></span>
+           
+           <span class="kwrd">if</span> (Arena.Speed(<span class="kwrd">this</span>) == 0)		<span class="rem">// check current speed</span>
+           {
+	       Arena.Drive(<span class="kwrd">this</span>, 0, 20);	<span class="rem">// ran into the south wall, or another robot</span>
+           }
+        </pre>
 
         <a name="t19"><strong>LocationX</strong></a>
         <br />
@@ -435,11 +443,13 @@
             The LocationX() method returns the robot's current x axis location.<br />
             LocationX() takes your robot (this) as an argument, and returns 0-999.<br />
             Examples:<br />
-                Arena.Drive(this, 180, 50);		// start heading for west wall<br />
-                if (Arena.LocationX(this) > 20)<br />
-                    ;							// do something until we are close<br />
-                Arena.Drive(this, 180, 0);		// stop drive<br />
         </p>
+        <pre class="csharpcode">
+            Arena.Drive(<span class="kwrd">this</span>, 180, 50);       <span class="rem">// start heading for west wall</span>
+            <span class="kwrd">if</span> (Arena.LocationX(<span class="kwrd">this</span>) &gt; 20)
+            ;                                 <span class="rem">// do something until we are close</span>
+            Arena.Drive(<span class="kwrd">this</span>, 180, 0);        <span class="rem">// stop drive</span>
+        </pre>
 
         <a name="t20"><strong>LocationY</strong></a>
         <br />
@@ -450,11 +460,13 @@
             The LocationY() method returns the robot's current x axis location.<br />
             LocationY() takes your robot (this) as an argument, and returns 0-999.<br />
             Examples:<br />
-                Arena.Drive(this, 180, 50);		// start heading for west wall<br />
-                if (Arena.LocationY(this) > 20)<br />
-                    ;							// do something until we are close<br />
-                Arena.Drive(this, 180, 0);		// stop drive<br />
         </p>
+        <pre class="csharpcode">
+            Arena.Drive(<span class="kwrd">this</span>, 180, 50);       <span class="rem">// start heading for west wall</span>
+            <span class="kwrd">if</span> (Arena.LocationY(<span class="kwrd">this</span>) &gt; 20)
+            ;                                 <span class="rem">// do something until we are close</span>
+            Arena.Drive(<span class="kwrd">this</span>, 180, 0);        <span class="rem">// stop drive</span>
+        </pre>
 
         <a name="t21"><strong>Distance</strong></a>
         <br />
@@ -463,9 +475,11 @@
             public static int Distance(int x1, int y1, int x2, int y2)<br />
             Classical Pythagorean distance formula to return the distance between the two points.<br />
             Example:<br />
-                // Distance to target<br />
-                int distance = Arena.Distance(Arena.LocationX(this), Arena.LocationY(this), targetX, targetY);<br />
         </p>
+        <pre class="csharpcode">
+            <span class="rem">// Distance to target</span>
+           <span class="kwrd">int</span> distance = Arena.Distance(Arena.LocationX(<span class="kwrd">this</span>), Arena.LocationY(<span class="kwrd">this</span>), targetX, targetY);
+        </pre>
 
         <a name="t22"><strong>PlotCourse</strong></a>
         <br />
@@ -475,9 +489,11 @@
             Plot course function, return degree heading to reach destination x, y; uses Atan() trig function<br />
             curx and cury is the current X,Y of your robot.<br />
             Example:<br />
-                // Find the heading we need to get to the desired corner<br />
-                int angle = Arena.PlotCourse(x, y, Arena.LocationX(this), Arena.LocationY(this));<br />
         </p>
+        <pre class="csharpcode">
+            <span class="rem">// Find the heading we need to get to the desired corner</span>
+           <span class="kwrd">int</span> angle = Arena.PlotCourse(x, y, Arena.LocationX(<span class="kwrd">this</span>), Arena.LocationY(<span class="kwrd">this</span>));
+        </pre>
 
         <a name="t23"><strong>Rand</strong></a>
         <br />
@@ -485,12 +501,13 @@
         <p>
             public static int Rand(int limit)<br />
             <br />
-            The Rand() method returns a random number between 0 and limit, <br />
-            up to 32767.<br />
+            The Rand() method returns a random number between 0 and limit, up to 32767.<br />
             Examples:<br />
-                degree = Arena.Rand(360);				// pick a random starting point<br />
-                range = Arena.Scan(this, degree, 0);	// and scan<br />
         </p>
+        <pre class="csharpcode">
+           degree = Arena.Rand(360);                <span class="rem">// Pick a random starting point</span>
+           range = Arena.Scan(<span class="kwrd">this</span>, degree, 0);     <span class="rem">// And scan</span>
+        </pre>
 
         <a name="t24"><strong>Sqrt</strong></a>
         <br />
@@ -501,10 +518,12 @@
             The Sqrt() method returns the square root of a number. The number is made<br />
             positive, if necessary.<br />
             Examples:<br />
-                x = x1 - x2;     // compute the classical distance formula<br />
-                y = y1 - y2;     // between two points (x1,y1) (x2,y2)<br />
-                distance = Arena.Sqrt((x*x) - (y*y)); <br />
         </p>
+        <pre class="csharpcode">
+           x = x1 - x2;     <span class="rem">// compute the classical distance formula</span>
+           y = y1 - y2;     <span class="rem">// between two points (x1,y1) (x2,y2)</span>
+           distance = Arena.Sqrt((x*x) - (y*y));
+        </pre>
 
         <a name="t25"><strong>Sin / Cos / Tan / Atan</strong></a>
         <br />
@@ -521,6 +540,7 @@
 	        to radians for proper calculations.<br />
 	        Atan() takes a ratio argument and returns a degree value, <br />
 	        between -90 and +90.<br />
+            <br />
         </p>
 
 	</body>
