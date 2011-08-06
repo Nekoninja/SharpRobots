@@ -1,5 +1,13 @@
-This is the root readme file that I created when I began using GIT and github
+Sharp Robots is a game based on computer programming and is
+loosely based upon CROBOTS by Tom Poindexter.
+http://en.wikipedia.org/wiki/Crobots
 
-Information and usage of Sharp Robots is located under the SharpRobotConsole/doc folder
-
-More changes or information
+Unlike arcade type games which require human inputs controlling
+some object, all strategy in Sharp Robots must be complete before the
+actual game begins.  Game strategy is condensed into a .NET language
+program that you design and write.  Currently only CSharp is supported.
+Your program controls a robot whose mission is to seek out, track, and 
+destroy other robots, each running different programs.  Each robot is 
+equally equipped, and up to four robots may compete at once.
+Sharp Robots is best played among several people, each refining their 
+own robot program, then matching program against program.
