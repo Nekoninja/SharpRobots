@@ -1,0 +1,513 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>Sharp Robots</title>
+        <style type="text/css">
+            body, html{height:100%;width:900px;color:#000;background-color:#FFF;-x-system-font:none;font-family:Verdana,Arial,serif;font-size:13px;padding:0;margin-left:40px;}
+            p{margin-left:40px;}
+            p.indent{margin-left:60px;}
+            .csharpcode, .csharpcode pre
+            {
+	            font-size: 14px;
+	            color: black;
+	            font-family: Consolas, "Courier New", Courier, Monospace;
+	            background-color: #ffffff;
+            }
+            .csharpcode pre { margin: 0em; }
+            .csharpcode .rem { color: #008000; }
+            .csharpcode .kwrd { color: #0000ff; }
+            .csharpcode .str { color: #006080; }
+            .csharpcode .op { color: #0000c0; }
+            .csharpcode .preproc { color: #cc6633; }
+            .csharpcode .asp { background-color: #ffff00; }
+            .csharpcode .html { color: #800000; }
+            .csharpcode .attr { color: #ff0000; }
+            .csharpcode .alt 
+            {
+	            background-color: #f4f4f4;
+	            width: 100%;
+	            margin: 0em;
+            }
+            .csharpcode .lnum { color: #606060; }
+        </style>
+	</head>
+	<body>
+	    <h1>Sharp Robots</h1>
+        <p>(C) 2011 SF Games</p>
+        <h2>Introduction</h2>
+        <p>
+	        Sharp Robots is a game based on computer programming and is
+	        based upon CROBOTS by Tom Poindexter. See the references
+	        section for more information.
+        </p>
+        <p>Click on a section below to jump to any topic.</p>
+
+        <div id="TableOfContents">
+            <p>
+                <a href="#t1">Description</a><br />
+                <a href="#t2">Intended audience</a><br />
+                <a href="#t3">Machine and software requirements</a><br />
+                <a href="#t4">Types of play</a><br />
+                <a href="#t5">Console Application, Command line options</a><br />
+                <a href="#t6">Examples</a><br />
+                <a href="#t7">Windows Application</a><br />
+                <a href="#t8">Battlefield</a><br />
+                <a href="#t9">Robot offense</a><br />
+                <a href="#t10">Robot defense</a><br />
+                <a href="#t11">Disabling opponents</a><br />
+                <a href="#t12">Sample display (Windows Console)</a><br />
+                <a href="#t13">Methods</a><br />
+            </p>
+            <p class="indent">
+                <a href="#t14">Scan</a><br />
+                <a href="#t15">Cannon</a><br />
+                <a href="#t16">Drive</a><br />
+                <a href="#t17">Damage</a><br />
+                <a href="#t18">Speed</a><br />
+                <a href="#t19">LocationX</a><br />
+                <a href="#t20">LocationY</a><br />
+                <a href="#t21">Distance</a><br />
+                <a href="#t22">PlotCourse</a><br />
+                <a href="#t23">Rand</a><br />
+                <a href="#t24">Sqrt</a><br />
+                <a href="#t25">Sin</a><br />
+                <a href="#t25">Cos</a><br />
+                <a href="#t25">Tan</a><br />
+                <a href="#t25">Atan</a><br />
+            </p>
+        </div>
+        <hr />
+
+        <a name="t1"><strong>Description</strong></a>
+        <br />
+        <br />
+        <p>
+	        Sharp Robots is a game based on computer programming and is<br />
+	        loosely based upon CROBOTS by Tom Poindexter. See the references<br />
+	        section for more information.<br />
+            <br />
+	        This document will describe Sharp Robots while referring to the<br />
+	        original operations of CROBOTS.<br />
+            <br />
+	        Unlike arcade type games which require human inputs controlling<br />
+	        some object, all strategy in Sharp Robots must be complete before the<br />
+	        actual game begins.  Game strategy is condensed into a .NET language<br />
+	        program that you design and write.  Currently only CSharp is supported.<br />
+	        Your program controls a robot whose mission is to seek out, track, and <br />
+	        destroy other robots, each running different programs.  Each robot is <br />
+	        equally equipped, and up to four robots may compete at once.<br />
+	        Sharp Robots is best played among several people, each refining their<br /> 
+	        own robot program, then matching program against program.<br />
+            <br />
+	        Sharp Robots consists of a C# compiler, and a battlefield display<br />
+	        (Console graphics and Windows Application).<br />
+	        ******** TODO Explain compiler ************<br />
+	        The Sharp Robots C# compiler accepts a limited (but useful) subset of<br />
+	        the C# language.  <br />
+	        The C# robot programs are aided by functions to <br />
+	        scan for opponents, start and stop drive mechanisms,<br />
+	        fire cannons, etc.  After the programs are compiled and loaded<br />
+	        into separate robots, the battle is observed.  Robots moving,<br />
+	        missiles flying and exploding, and certain status information are<br />
+	        displayed on the screen, in real-time.<br />
+        </p>
+
+        <a name="t2"><strong>Intended audience</strong></a>
+        <br />
+        <br />
+        <p>
+	        Sharp Robots will most likely appeal to programmers (especially those<br />
+	        who think they can write the "best" programs), computer game<br />
+	        enthusiasts, people wishing to learn the C# language.<br />
+        </p>
+
+        <a name="t3"><strong>Machine and software requirements</strong></a>
+        <br />
+        <br />
+        <p>
+	        - Windows XP and above with .NET 4.0<br />
+	        - May run on Linux, Mac with Mono but not tested<br />
+	        - Text editor (Notepad, Notepad++, TextPad, etc)<br />
+        </p>
+
+        <a name="t4"><strong>Types of play</strong></a>
+        <br />
+        <br />
+        <p>
+	        Sharp Robots currently runs in match (single play) in which the full<br />
+	        screen, real-time battlefield display is used.<br />
+            <br />
+	        CROBOTS can either run one match (single play), in which the full<br />
+	        screen, real-time battlefield display is used, or several matches<br />
+	        (match play), in which only the name of the winner is<br />
+	        printed after each match. Sharp Robots currently does not support<br />
+	        match play.<br />
+        </p>
+
+        <a name="t5"><strong>Console Application, Command line options</strong></a>
+        <br />
+        <br />
+        <p>
+	        Sharp Robots is started from the Windows Command Console prompt:<br />
+            <br />
+	        SharpRobotsConsole robot-program-1.cs [robot-program-n.cs]<br />
+            <br />
+	        Valid options and parameters are:<br />
+            <br />
+		        Path and file name of one or more C# source files<br />
+        </p>
+
+        <a name="t6"><strong>Examples</strong></a>
+        <br />
+        <br />
+        <p>
+	        1) Watch three robots compete with full display:<br />
+		    SharpRobotsConsole robot1.cs robot2.cs robot3.cs<br /> 
+        </p>
+
+        <a name="t7"><strong>Windows Application</strong></a>
+        <br />
+        <br />
+        <p>
+            ********** TODO Write up usage **********<br />
+        </p>
+
+        <a name="t8"><strong>Battlefield</strong></a>
+        <br />
+        <br />
+        <p>
+	        The battlefield is a 1,000 by 1,000 meter square.  A wall<br />
+	        surrounds the perimeter, so that a robot running into the wall<br />
+	        will incur damage.<br />
+            <br />
+	        The upper right corner has the coordinates x = 0, y = 0; the lower<br />
+	        right corner has the coordinated x = 999, y = 999. This differs<br />
+	        from CROBOTS where the lower left corner has the coordinates <br />
+	        x = 0, y = 0; the upper right corner has the coordinated <br />
+	        x = 999, y = 999.<br />
+            <br />
+	        The compass system is a traditional compass oriented so that <br />
+	        due east (right) is 90 degrees, 0 is north, 180 is south, <br />
+	        270 is west.  One degree below due north is 359. This differs <br />
+	        from CROBOTS where it has the compass system oriented so that <br />
+	        due east (right) is 0 degrees, 90 is north, 180 is west, 270 <br />
+	        is south.  One degree below due east is 359.<br />
+            <br />
+            <br />
+                           315    0   45<br />
+                               \  |  / <br />
+                                \ | /<br />
+                          270 --- x --- 90<br />
+                                / | \<br />
+                               /  |  \ <br />
+                           225   180   135<br />
+        </p>
+
+        <a name="t9"><strong>Robot offense</strong></a>
+        <br />
+        <br />
+        <p>
+	        The main offensive weapons are the cannon and scanner.  The<br />
+	        cannon has a range of 700 meters.  There are an unlimited number<br />
+	        of missiles that can be fired, but a reloading factor limits the<br />
+	        number of missiles in the air at any one time to two.  The cannon<br />
+	        is mounted on an independent turret, and therefore can fire any<br />
+	        direction, 0-359, regardless of robot heading.<br />
+
+	        The scanner is an optical device that can instantly scan any<br />
+	        chosen heading, 0-359.  The scanner has a maximum resolution of  <br />
+	        +/- 10 degrees.  This enables the robot to quickly scan the field<br />
+	        at a low resolution, then use maximum resolution to pinpoint an<br />
+	        opponent.<br />
+        </p>
+
+        <a name="t10"><strong>Robot defense</strong></a>
+        <br />
+        <br />
+        <p>
+	        The only defense available are the motor drive and status<br />
+	        registers.  The motor can be engaged on any heading, 0-359, in<br />
+	        speeds from 0-100 percent of power.  There are acceleration and<br />
+	        deceleration factors.  A speed of 0 stops the motor.  Turns can<br />
+	        be negotiated at speeds of 50% and less, in any direction.  Of<br />
+	        course, the motor drive can be engaged any time, and is necessary<br />
+	        on offense when a target is beyond the 700 meter range of the<br />
+	        cannon.<br />
+            <br />
+	        Certain method calls provide feedback to the robot. The<br />
+	        primary calls indicate the percent of damage, and current x<br />
+	        and y locations on the battlefield.  Another call provides<br />
+	        current drive speed. This differs from CROBOTS where so<br />
+	        called registers are used to obtain this information.<br />
+        </p>
+
+        <a name="t11"><strong>Disabling opponents</strong></a>
+        <br />
+        <br />
+        <p>
+	        A robot is considered dead when the damage reaches 100%.  Percent<br />
+	        of damage is inflicted as follows:<br />
+            <br />
+			        2% - collision into another robot (both robots in a<br />
+					        collision receive damage) or into a wall.  A<br />
+					        collision also causes the motor drive to disengage,<br />
+					        and speed is reduced to 0.<br />
+            <br />
+			        3% - a missile exploding within a 40 meter radius.<br />
+            <br />
+			        5% - a missile exploding within a 20 meter radius.<br />
+            <br />
+			        10% - a missile exploding within a 5 meter radius.<br />
+            <br />
+	        Damage is cumulative, and cannot be repaired.  However, a robot<br />
+	        does not loose any mobility, fire potential, etc. at high damage<br />
+	        levels.  In other words, a robot at 99% damage performs equally<br />
+	        as a robot with no damage.<br />
+        </p>
+
+        <a name="t12"><strong>Sample display (Windows Console)</strong></a>
+        <br />
+        <br />
+        <p>
+                                                        (Status blocks)<br />
+            (x=0,y=0)                      (x=999,y=0)<br />
+            <br />
+                +------------------------------------+ 1 fubar<br />
+                |                                    |  D% 015   Sc 218<br />
+                |                          \|/ 1     |  Sp 000   Hd 090<br />
+                |     (missile exploding)  -#-       | ------------------<br />
+                |                          /|\       | 2 snafu<br />
+             (y |                                    |  D% 050   Sc 275<br />
+                |              +        (missiles    |  Sp 100   Hd 180<br />
+             a  |                     +   flying)    | ------------------<br />
+             x  |   2                                | 3 bimbo<br />
+             i  |                                    |  D% 000   Sc 045<br />
+             s) |                 3                  |  Sp 000   Hd 000<br />
+                |                /                   | ------------------<br />
+                |          (robots) ----\            | 4 kumquat<br />
+                |                         4          |  D% 100   Sc 050<br />
+                |                                    |  Sp 000   Hd 335<br />
+                |                                    | <br />
+                |                                    |<br />
+                +------------------------------------+ Cycle: 4500<br />
+            <br />
+            (x=0,y=999)       (x axis)   (x=999,y=999)<br />
+            <br />
+            <br />
+            Each status block shows the class name of the robot, the damage<br />
+            incurred, the current scan degrees, and the speed and heading.<br />
+            Robots are represented on the field by '1', '2', etc., according<br />
+            to the status block position.  The number of elapsed robot cycles<br />
+		    is shown at the bottom of the status blocks.<br />
+            <br />
+            The Sharp Robots program can be stopped at any time, by using<br />
+            Ctrl-C.<br />
+        </p>
+
+        <a name="t13"><strong>Methods</strong></a>
+        <br />
+        <br />
+        <p>
+	        The Methods exposed to robots provides robot control and<br />
+	        certain arithmetic functions.  Use of the following in your<br />
+	        code is required to use this functionality.<br />
+	        using System;<br />
+	        using SharpRobotsEngine;<br />
+	        namespace RobotScript<br />
+	        Deriving your robot class from Robot<br />
+            <br />
+	        When deriving from the base class Robot, an Arena class is<br />
+	        made available from which all of the below methods are called.<br />
+	        See the example minimal robot template for specifics.<br />
+        </p>
+
+        <a name="t14"><strong>Scan</strong></a>
+        <br />
+        <br />
+        <p>
+	        public static int Scan(Robot robot, int degree, int resolution)<br />
+            <br />
+		        The Scan() method invokes the robot's scanner, at a specified<br />
+		        degree and resolution.  Scan() returns 0 if no robots are<br />
+		        within the scan range or a positive integer representing the<br />
+		        range to the closest robot.  Degree should be within the range<br />
+		        0-359, otherwise degree is forced into 0-359 by a modulo 360<br />
+		        operation, and made positive if necessary.  Resolution controls<br />
+		        the scanner's sensing resolution, up to +/- 10 degrees.<br />
+		        Examples:<br />
+        </p>
+        <pre class="csharpcode">
+            <span class="kwrd">int</span> range;
+            range = Arena.Scan(<span class="kwrd">this</span>, 45, 0);        <span class="rem">// scan 45, with no variance</span>
+            range = Arena.Scan(<span class="kwrd">this</span>, 365, 10);      <span class="rem">// scans the range from 355 to 15</span>
+        </pre>
+
+        <a name="t15"><strong>Cannon</strong></a>
+        <br />
+        <br />
+        <p>
+		    The Cannon() method fires a missile heading a specified range<br />
+		    and direction.  Cannon() returns true if a missile was fired,<br />
+		    or false if the cannon is reloading.  Degree is forced into<br />
+		    the range 0-359 as in scan().  Range can be 0-700, with greater<br />
+		    ranges truncated to 700.<br />
+		    Examples:<br />
+        </p>
+        <pre class="csharpcode">
+            <span class="kwrd">int</span> degree = 45;
+            <span class="kwrd">int</span> range;                                      <span class="rem">// set a direction to test</span>
+            <span class="kwrd">if</span> ((range=Arena.Scan(<span class="kwrd">this</span>, degree, 2)) &gt; 0)    <span class="rem">// see if a target is there</span>
+                Arena.Cannon(<span class="kwrd">this</span>, degree, range);          <span class="rem">// fire a missile</span>
+        </pre>
+
+        <a name="t16"><strong>Drive</strong></a>
+        <br />
+        <br />
+        <p>
+		    The Drive() method activates the robot's drive mechanism, on a <br />
+		    specified heading and speed.  Degree is forced into the range<br />
+		    0-359 as in Scan().  Speed is expressed as a percent, with 100 as<br />
+		    maximum.  A speed of 0 disengages the drive.  Changes in<br />
+		    direction can be negotiated at speeds of less than 50 percent.<br />
+		    Examples:<br />
+        </p>
+        <pre class="csharpcode">
+            Arena.Drive(<span class="kwrd">this</span>, 0, 100);  <span class="rem">// head due east, at maximum speed</span>
+            Arena.Drive(<span class="kwrd">this</span>, 90, 0);   <span class="rem">// stop motion</span>
+        </pre>
+
+        <a name="t17"><strong>Damage</strong></a>
+        <br />
+        <br />
+        <p>
+		    The Damage() method returns the current amount of damage<br />
+		    incurred.  Damage() returns the percent of damage, 0-99.<br />
+		    (100 percent damage means the robot is completely disabled,<br />
+		    thus no longer running!)<br />
+		    Examples:<br />
+        </p>
+        <pre class="csharpcode">
+            d = Arena.Damage(<span class="kwrd">this</span>);         <span class="rem">// save current state</span>
+            ; ; ;                           <span class="rem">// other instructions</span>
+            <span class="kwrd">if</span> (d != Arena.Damage(<span class="kwrd">this</span>))    <span class="rem">// compare current state to prior state</span>
+            {
+                Arena.Drive(<span class="kwrd">this</span>, 90, 100); <span class="rem">// robot has been hit, start moving</span>
+                d = Arena.Damage(<span class="kwrd">this</span>);     <span class="rem">// get current damage again</span>
+            }
+        </pre>
+
+        <a name="t18"><strong>Speed</strong></a>
+        <br />
+        <br />
+        <p>
+		    The Speed() method returns the current percentage speed of the robot<br />
+		    0-100.  Note that Speed() may not always be the same as the last<br />
+		    Drive(), because of acceleration and deceleration.<br />
+		    Examples:<br />
+			    Arena.Drive(this, 180, 100);	// start drive, due south<br />
+			    ; ; ;							// other instructions<br />
+			    if (Arena.Speed(this) == 0)		// check current speed<br />
+			    {<br />
+				    Arena.Drive(this, 0, 20);	// ran into the south wall, or another robot<br />
+			    }<br />
+        </p>
+
+        <a name="t19"><strong>LocationX</strong></a>
+        <br />
+        <br />
+        <p>
+            public static int LocationX(Robot robot)<br />
+            <br />
+            The LocationX() method returns the robot's current x axis location.<br />
+            LocationX() takes your robot (this) as an argument, and returns 0-999.<br />
+            Examples:<br />
+                Arena.Drive(this, 180, 50);		// start heading for west wall<br />
+                if (Arena.LocationX(this) > 20)<br />
+                    ;							// do something until we are close<br />
+                Arena.Drive(this, 180, 0);		// stop drive<br />
+        </p>
+
+        <a name="t20"><strong>LocationY</strong></a>
+        <br />
+        <br />
+        <p>
+            public static int LocationY(Robot robot)<br />
+            <br />
+            The LocationY() method returns the robot's current x axis location.<br />
+            LocationY() takes your robot (this) as an argument, and returns 0-999.<br />
+            Examples:<br />
+                Arena.Drive(this, 180, 50);		// start heading for west wall<br />
+                if (Arena.LocationY(this) > 20)<br />
+                    ;							// do something until we are close<br />
+                Arena.Drive(this, 180, 0);		// stop drive<br />
+        </p>
+
+        <a name="t21"><strong>Distance</strong></a>
+        <br />
+        <br />
+        <p>
+            public static int Distance(int x1, int y1, int x2, int y2)<br />
+            Classical Pythagorean distance formula to return the distance between the two points.<br />
+            Example:<br />
+                // Distance to target<br />
+                int distance = Arena.Distance(Arena.LocationX(this), Arena.LocationY(this), targetX, targetY);<br />
+        </p>
+
+        <a name="t22"><strong>PlotCourse</strong></a>
+        <br />
+        <br />
+        <p>
+            public static int PlotCourse(int xx, int yy, int curx, int cury)<br />
+            Plot course function, return degree heading to reach destination x, y; uses Atan() trig function<br />
+            curx and cury is the current X,Y of your robot.<br />
+            Example:<br />
+                // Find the heading we need to get to the desired corner<br />
+                int angle = Arena.PlotCourse(x, y, Arena.LocationX(this), Arena.LocationY(this));<br />
+        </p>
+
+        <a name="t23"><strong>Rand</strong></a>
+        <br />
+        <br />
+        <p>
+            public static int Rand(int limit)<br />
+            <br />
+            The Rand() method returns a random number between 0 and limit, <br />
+            up to 32767.<br />
+            Examples:<br />
+                degree = Arena.Rand(360);				// pick a random starting point<br />
+                range = Arena.Scan(this, degree, 0);	// and scan<br />
+        </p>
+
+        <a name="t24"><strong>Sqrt</strong></a>
+        <br />
+        <br />
+        <p>
+            public static int Sqrt(int number)<br />
+            <br />
+            The Sqrt() method returns the square root of a number. The number is made<br />
+            positive, if necessary.<br />
+            Examples:<br />
+                x = x1 - x2;     // compute the classical distance formula<br />
+                y = y1 - y2;     // between two points (x1,y1) (x2,y2)<br />
+                distance = Arena.Sqrt((x*x) - (y*y)); <br />
+        </p>
+
+        <a name="t25"><strong>Sin / Cos / Tan / Atan</strong></a>
+        <br />
+        <br />
+        <p>
+            public static int Sin(int degree)<br />
+            public static int Cos(int degree)<br />
+            public static int Tan(int degree)<br />
+            public static int Atan(int degree)<br />
+            <br />
+            These functions provide trigometric values.  Sin(), Cos(),<br />
+            and Tan(), take a degree argument, 0-359, and return the<br />
+            trigometric value as a double. The given degrees are converted<br />
+	        to radians for proper calculations.<br />
+	        Atan() takes a ratio argument and returns a degree value, <br />
+	        between -90 and +90.<br />
+        </p>
+
+	</body>
+</html>

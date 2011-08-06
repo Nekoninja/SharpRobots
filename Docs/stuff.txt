@@ -1,0 +1,23 @@
+CROBOTS
+http://en.wikipedia.org/wiki/Crobots
+http://corewar.co.uk/crobots/
+http://crobots.deepthought.it/home.php
+http://crobots.deepthought.it/home.php?link=1
+http://www.nyx.net/~tpoindex/crob.html
+http://www.programminggames.org/CROBOTS.ashx
+http://cplus.about.com/b/2010/10/01/crobots-is-still-going-after-25-years.htm
+
+CROBOTS 3D
+http://antru.ru/crobots3d/
+
+C++ Robots
+http://www.gamerz.net/c++robots/
+http://www.pbm.com/~lindahl/pbem_articles/cpprobots_environment.html
+
+AT-Robots
+Assembly like language
+http://necrobones.com/atrobots/
+
+2D motion
+http://channel9.msdn.com/coding4fun/articles/Upgrade-Your-Game-TinyTennis-C
+
