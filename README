@@ -11,3 +11,11 @@ destroy other robots, each running different programs.  Each robot is
 equally equipped, and up to four robots may compete at once.
 Sharp Robots is best played among several people, each refining their 
 own robot program, then matching program against program.
+
+*************************
+NOTE that the current source code here is not complete in the sense
+that one could begin pitting robots against other robots.
+There are a number of items to complete before this could happen
+such as getting the robots to move in all proper directions, firing,
+and other core functionality. The code has been placed on github
+in order to play with and learn git.
