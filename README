@@ -10,7 +10,7 @@ Your program controls a robot whose mission is to seek out, track, and
 destroy other robots, each running different programs.  Each robot is 
 equally equipped, and up to four robots may compete at once.
 Sharp Robots is best played among several people, each refining their 
-own robot program, then matching program against program.
+own robot program, then matching their program against other programs.
 
 *************************
 NOTE that the current source code here is not complete in the sense

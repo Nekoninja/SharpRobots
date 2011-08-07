@@ -67,6 +67,16 @@ namespace SharpRobotsConsole
 
                     _cycles++;
                     UpdateDisplay();
+
+                    // Check for quit 'Q' key
+                    if (Console.KeyAvailable)
+                    {
+                        ConsoleKeyInfo consoleKeyInfo = Console.ReadKey(true);
+
+                        if (consoleKeyInfo.Key == ConsoleKey.Q)
+                            return;
+                    }
+
                     Thread.Sleep(20);
                 }
             }
