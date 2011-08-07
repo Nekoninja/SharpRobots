@@ -40,7 +40,7 @@ namespace SharpRobotsEngine
     #region Class: BotAssembly
 
     /// <summary>
-    /// Compiled bot access
+    /// Access to the loaded .NET bot assembly DLL
     /// </summary>
     public class BotAssembly
     {
@@ -111,7 +111,7 @@ namespace SharpRobotsEngine
         #region Constructor
 
         /// <summary>
-        /// 
+        /// The constructor initializes the Battle Engine
         /// </summary>
         public BattleEngine()
         {
@@ -132,7 +132,7 @@ namespace SharpRobotsEngine
 
         /// <summary>
         /// Load given robots, compile, instantiate and initialize 
-        /// Sets loaded robots Id and calls it's Initialize method
+        /// Sets loaded robots Id's and calls each robots Initialize method
         /// </summary>
         /// <param name="botsSource"></param>
         /// <returns></returns>
@@ -169,7 +169,9 @@ namespace SharpRobotsEngine
         #region Method: Execute
 
         /// <summary>
-        /// 
+        /// The Execute method is called repeatedly and runs the robots
+        /// on the battle field calling each robots Execute method, updating
+        /// in flight missiles, checking for collisions and updating damage.
         /// </summary>
         public bool Execute()
         {
@@ -179,8 +181,6 @@ namespace SharpRobotsEngine
             double gameTime = _timer.ElapsedMilliseconds / 1000.0;
             double elapsedTime = gameTime - _lastTime;
             _lastTime = gameTime;
-
-            // TODO Add collision detection
 
             // TODO Add missiles
             // Update any missiles
@@ -220,7 +220,7 @@ namespace SharpRobotsEngine
                     if (bot.Location.Y < 0) bot.Location.Y = 0;
                     if (bot.Location.Y > ArenaHeight - 1) bot.Location.Y = ArenaHeight - 1;
 
-                    // Determine collisions and damage
+                    // TODO Add collision detection and damage
 
                     // Have robots perform an execution step
                     bot.Assembly.GetType(Namespace + "." + bot.ClassName).GetMethod(ExecuteMethod).Invoke(bot.AssemblyInstance, null);
@@ -315,7 +315,7 @@ namespace SharpRobotsEngine
 
         /// <summary>
         /// Compiles the given source file and returns a <see cref="BotAssembly"/>
-        /// containing a created instance of the code
+        /// containing a created instance of the assembly
         /// </summary>
         /// <param name="sourceFile"></param>
         /// <returns></returns>
@@ -348,6 +348,8 @@ namespace SharpRobotsEngine
             //parameters.WarningLevel = 3;
             // Set whether to treat all warnings as errors.
             //parameters.TreatWarningsAsErrors = false;
+            //
+            // Check for and disallow loops that take over execution, such as while (true) and recursion
 
             CompilerResults results = codeProvider.CompileAssemblyFromSource(parameters, source);
             PeekMsil(results, fileNameOnly);
@@ -380,7 +382,8 @@ namespace SharpRobotsEngine
         #region Method: Ininialize
 
         /// <summary>
-        /// 
+        /// Initialize the given robot with the given id, assign a random
+        /// starting location and call the robots InitMethod
         /// </summary>
         /// <param name="bot"></param>
         /// <param name="id"></param>
@@ -400,7 +403,7 @@ namespace SharpRobotsEngine
         #region Method: PeekMsil
 
         /// <summary>
-        /// Currently for debug
+        /// This method is being used for debug and research / development
         /// </summary>
         /// <param name="compilerResults"></param>
         /// <param name="className"></param>

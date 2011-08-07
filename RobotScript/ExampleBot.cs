@@ -23,8 +23,8 @@ namespace RobotScript
         /// <summary>
         /// Execute
         /// The second of the two required methods to implement
-        /// The BotEngine will call this method once each game cycle allowing us
-        /// to implement/execute our robot logic
+        /// The BotEngine will call this method once each game cycle/frame allowing us
+        /// to execute our robot logic
         /// </summary>
         public void Execute()
         {

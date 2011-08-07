@@ -18,6 +18,10 @@
 
 namespace SharpRobotsEngine
 {
+    /// <summary>
+    /// A players robot class must derive from this base class
+    /// See the various robot code examples
+    /// </summary>
     public class Robot
     {
         public int Id { get; set; }

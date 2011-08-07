@@ -19,6 +19,10 @@ using System;
 
 namespace SharpRobotsEngine
 {
+    /// <summary>
+    /// The static Arena class is the API available to and used by the players
+    /// robots to interact on the Battle Field
+    /// </summary>
     public static class Arena
     {
         #region Fields
@@ -106,7 +110,9 @@ namespace SharpRobotsEngine
             if (speed > 100) speed = 100;
             if (degree < 0) degree = 0;
             if (degree > 359) degree = 359;
+
             EngineInstance.Bots.Find(botAssembly => botAssembly.Id == robot.Id).Speed = speed;
+
             if (speed <= 50)
                 EngineInstance.Bots.Find(botAssembly => botAssembly.Id == robot.Id).Direction = degree;
         }
@@ -216,7 +222,8 @@ namespace SharpRobotsEngine
         {
             int x = x1 - x2;
             int y = y1 - y2;
-            return Arena.Sqrt((x * x) + (y * y));
+
+            return Sqrt((x * x) + (y * y));
         }
 
         #endregion
@@ -257,6 +264,7 @@ namespace SharpRobotsEngine
             Random rnd = new Random((int) DateTime.Now.Ticks);
 
             if (limit > RandMax) limit = RandMax;
+
             return rnd.Next(RandMin, limit);
         }
 
@@ -278,6 +286,7 @@ namespace SharpRobotsEngine
         public static int Sqrt(int number)
         {
             double r = Math.Sqrt(number);
+
             return (int) Math.Abs(r);
         }
 
@@ -293,6 +302,7 @@ namespace SharpRobotsEngine
         public static double Sin(int degree)
         {
             double angle = degree * Math.PI / 180;
+
             return Math.Sin(angle);
         }
 
@@ -308,6 +318,7 @@ namespace SharpRobotsEngine
         public static double Cos(int degree)
         {
             double angle = degree * Math.PI / 180;
+
             return Math.Cos(angle);
         }
 
@@ -323,6 +334,7 @@ namespace SharpRobotsEngine
         public static double Tan(int degree)
         {
             double angle = degree * Math.PI / 180;
+
             return Math.Tan(angle);
         }
 
@@ -339,7 +351,8 @@ namespace SharpRobotsEngine
         {
             double angle = Math.Atan(ratio);
             angle *= 180 / Math.PI;
-            return (int) angle;
+
+            return (int)angle;
         }
 
         #endregion
