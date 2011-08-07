@@ -155,8 +155,8 @@ namespace SharpRobotsEngine
                     BotAssembly bot = Compile(sourceFile, assemblyName);
 
                     if (null == bot || null == bot.AssemblyInstance) return false;
+                    Ininialize(ref bot, ++botId);
                     Bots.Add(bot);
-                    Ininialize(ref bot, botId++);
                 }
             }
             catch (Exception ex)

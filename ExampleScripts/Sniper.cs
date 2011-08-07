@@ -52,6 +52,8 @@ namespace RobotScript
         /// </summary>
         public void Init()
         {
+			Name = "Sniper Bot";
+
             // Initialize the corner info x and y location of a corner, and starting scan degree
             _corner1X = 10;
             _corner1Y = 10;

@@ -18,6 +18,7 @@ namespace RobotScript
         /// </summary>
         public void Init()
         {
+			Name = "Example Bot";
         }
 
         /// <summary>
