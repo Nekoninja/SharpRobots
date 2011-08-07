@@ -149,8 +149,10 @@ namespace SharpRobotsEngine
                 int botId = 1;
                 foreach (var sourceFile in botsSource)
                 {
+                    // Create a unique assembly name so we can pit the same bot class against itself
+                    string assemblyName = Path.GetFileNameWithoutExtension(sourceFile) + botId;
                     currentSourceFile = sourceFile;
-                    BotAssembly bot = Compile(sourceFile);
+                    BotAssembly bot = Compile(sourceFile, assemblyName);
 
                     if (null == bot || null == bot.AssemblyInstance) return false;
                     Bots.Add(bot);
@@ -323,8 +325,9 @@ namespace SharpRobotsEngine
         /// containing a created instance of the assembly
         /// </summary>
         /// <param name="sourceFile"></param>
+        /// <param name="assemblyName"></param>
         /// <returns></returns>
-        private BotAssembly Compile(string sourceFile)
+        private BotAssembly Compile(string sourceFile, string assemblyName)
         {
             string source;
             string fileNameOnly = Path.GetFileNameWithoutExtension(sourceFile);
@@ -339,7 +342,7 @@ namespace SharpRobotsEngine
                                                     GenerateExecutable = false,
                                                     IncludeDebugInformation = false,
                                                     GenerateInMemory = false,
-                                                    OutputAssembly = fileNameOnly + ".dll",
+                                                    OutputAssembly = assemblyName + ".dll",
                                                     MainClass = namespaceDotClass
                                                 };
 
