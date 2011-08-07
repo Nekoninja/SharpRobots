@@ -50,6 +50,7 @@ namespace SharpRobotsEngine
 
         public int Id { get; set; }
         public PointF Location;
+        public PointF LastLocation;
         public int Direction { get; set; }
         public int Speed { get; set; }
         public int LastSpeed { get; set; }
@@ -70,6 +71,7 @@ namespace SharpRobotsEngine
     {
         public int Id { get; set;  }
         public PointF Location;
+        public PointF LastLocation { get; set; }
         public int Direction { get; set; }
         public int Speed { get; set; }
         public int Range { get; set; }
@@ -209,6 +211,9 @@ namespace SharpRobotsEngine
 
                     //    bot.LastSpeed = bot.Speed;
                     //}
+
+                    bot.LastLocation.X = bot.Location.X;
+                    bot.LastLocation.Y = bot.Location.Y;
 
                     // Update robot position based on the velocity
                     bot.Location.X += (float) Math.Sin(bot.Direction*Math.PI/180)*bot.Speed*(float) elapsedTime;
@@ -392,8 +397,10 @@ namespace SharpRobotsEngine
             bot.Id = id;
             bot.Location.X = Arena.Rand(ArenaWidth);
             bot.Location.Y = Arena.Rand(ArenaHeight);
-            // Zero by default
-            //bot.Speed = 0; bot.LastSpeed = 0; bot.Damage = 0; bot.Direction = 0; bot.ScanDirection = 0; bot.MissilesInFlight = 0;
+            bot.LastLocation.X = bot.Location.X;
+            bot.LastLocation.Y = bot.Location.Y;
+
+            // Zero by default : bot.Speed = 0; bot.LastSpeed = 0; bot.Damage = 0; bot.Direction = 0; bot.ScanDirection = 0; bot.MissilesInFlight = 0;
             bot.Assembly.GetType(Namespace + "." + bot.ClassName).GetProperty("Id").SetValue(bot.AssemblyInstance, id, null);
             bot.Assembly.GetType(Namespace + "." + bot.ClassName).GetMethod(InitMethod).Invoke(bot.AssemblyInstance, null);
         }
@@ -411,25 +418,25 @@ namespace SharpRobotsEngine
         {
             MethodInfo mi = compilerResults.CompiledAssembly.GetType(Namespace + "." + className).GetMethod(ExecuteMethod);
             MethodBody mb = mi.GetMethodBody();
-            Console.WriteLine("\r\nMethod: {0}", mi);
+            Trace.WriteLine(String.Format("\r\nMethod: {0}", mi));
 
             if (null != mb)
             {
                 // Display the general information included in the MethodBody object.
-                Console.WriteLine("    Local variables are initialized: {0}", mb.InitLocals);
-                Console.WriteLine("    Maximum number of items on the operand stack: {0}", mb.MaxStackSize);
+                Trace.WriteLine(String.Format("    Local variables are initialized: {0}", mb.InitLocals));
+                Trace.WriteLine(String.Format("    Maximum number of items on the operand stack: {0}", mb.MaxStackSize));
 
                 // Display information about the local variables in the method body.
                 Console.WriteLine();
                 foreach (LocalVariableInfo lvi in mb.LocalVariables)
-                    Console.WriteLine("Local variable: {0}", lvi);
+                    Trace.WriteLine(String.Format("Local variable: {0}", lvi));
 
                 byte[] msil = mb.GetILAsByteArray();
-                Console.WriteLine("IL Code");
+                Trace.WriteLine("IL Code");
                 foreach (var b in msil)
                 {
-                    Console.Write(b);
-                    Console.Write(" ");
+                    Trace.Write(b);
+                    Trace.Write(" ");
                 }
             }
         }

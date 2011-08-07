@@ -101,6 +101,13 @@ namespace SharpRobotsConsole
             // Screen height 24 / Battle Field height 1000 = 0.024
             _scaleX = (double)ArenaWidth / Arena.ArenaWidth;
             _scaleY = (double)ArenaHeight / Arena.ArenaHeight;
+
+            // Render the right Wall
+            for (int y = 0; y < ArenaHeight; y++)
+            {
+                Console.SetCursorPosition(ArenaWidth, y);
+                Console.Write("|");
+            }
         }
 
         #endregion
@@ -112,15 +119,18 @@ namespace SharpRobotsConsole
         /// </summary>
         private static void UpdateDisplay()
         {
-            Console.Clear();
-
             int botNum = 0;
             int yPos = 0;
+
             foreach (var bot in _battleEngine.Bots)
             {
                 int x = (int) (bot.Location.X * _scaleX);
                 int y = (int) (bot.Location.Y * _scaleY);
+                int lastX = (int)(bot.LastLocation.X * _scaleX);
+                int lastY = (int)(bot.LastLocation.Y * _scaleY);
 
+                Console.SetCursorPosition(lastX, lastY);
+                Console.Write(" ");
                 Console.SetCursorPosition(x, y);
                 Console.Write("O");
 
@@ -139,13 +149,6 @@ namespace SharpRobotsConsole
             // Bottom info
             Console.SetCursorPosition(ArenaWidth + 1, ArenaHeight - 1);
             Console.Write("Cycle: " + _cycles);
-
-            // Right Wall
-            for (int y = 0; y < ArenaHeight - 1; y++)
-            {
-                Console.SetCursorPosition(ArenaWidth, y);
-                Console.Write("|");
-            }
         }
 
         #endregion

@@ -56,6 +56,7 @@
     <Content Include="doc\SharpRobots.htm" />
     <Content Include="doc\SharpRobots.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
