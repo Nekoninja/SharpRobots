@@ -99,6 +99,7 @@ namespace SharpRobotsConsole
             Console.TreatControlCAsInput = false;
             Console.CancelKeyPress += CtrlCHandler;
             Console.CursorVisible = false;
+            Console.Title = "Sharp Robots";
 
             // Change the console size
             Console.WindowWidth = ScreenWidth;
