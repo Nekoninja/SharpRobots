@@ -142,8 +142,9 @@ namespace SharpRobotsConsole
 
                 Console.SetCursorPosition(lastX, lastY);
                 Console.Write(" ");
-                Console.SetCursorPosition(x, y);
-                Console.Write("*");
+
+                if (missile.Dead) continue;
+                Console.SetCursorPosition(x, y); Console.Write("*");
             }
 
             foreach (var bot in _battleEngine.Bots)

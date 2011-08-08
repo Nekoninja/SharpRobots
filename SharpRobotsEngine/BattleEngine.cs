@@ -20,6 +20,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace SharpRobotsEngine
@@ -75,6 +76,7 @@ namespace SharpRobotsEngine
         public int Direction { get; set; }
         public int Speed { get; set; }
         public int Range { get; set; }
+        public bool Dead { get; set; }
     }
 
     #endregion
@@ -90,6 +92,7 @@ namespace SharpRobotsEngine
 
         private readonly Stopwatch _timer = new Stopwatch();
         private double _lastTime;
+        private bool _deadMissiles;
         private const string Language = "CSharp";
         private const string Namespace = "RobotScript";
         private const string InitMethod = "Init";
@@ -186,6 +189,10 @@ namespace SharpRobotsEngine
             double elapsedTime = gameTime - _lastTime;
             _lastTime = gameTime;
 
+            // Remove any missiles that died last game frame
+            if (_deadMissiles)
+                RemoveDeadMissles();
+
             // Update any missiles
             foreach (var missile in Missiles)
             {
@@ -194,12 +201,28 @@ namespace SharpRobotsEngine
                 // Update robot position based on the velocity
                 missile.Location.X += (float)Math.Sin(missile.Direction * Math.PI / 180) * missile.Speed * (float)elapsedTime;
                 missile.Location.Y += (float)Math.Cos(missile.Direction * Math.PI / 180) * missile.Speed * (float)elapsedTime;
+                missile.Range -= Arena.Distance((int)missile.LastLocation.X, (int)missile.LastLocation.Y, (int)missile.Location.X, (int)missile.Location.Y);
 
                 // Fix the robot position to not leave the Arena
                 if (missile.Location.X < 0) missile.Location.X = 0;
                 if (missile.Location.X > ArenaWidth - 1) missile.Location.X = ArenaWidth - 1;
                 if (missile.Location.Y < 0) missile.Location.Y = 0;
                 if (missile.Location.Y > ArenaHeight - 1) missile.Location.Y = ArenaHeight - 1;
+
+                // Missile has reached it's defined range.
+                if (missile.Range <= 0)
+                {
+                    // Explode the missile
+                    // TODO Determine any damage to bots in the area
+
+                    // Update the bot that fired the missile
+                    Missile missile1 = missile;
+                    Bots.Find(botAssembly => botAssembly.Id == missile1.Id).MissilesInFlight--;
+
+                    // Mark missile as dead so we can clean it up
+                    missile.Dead = true;
+                    _deadMissiles = true;
+                }
             }
 
             // Update bots
@@ -347,11 +370,14 @@ namespace SharpRobotsEngine
             // TODO Determine where to start the missile in relation to the bot that fired it
             if (Bots.Find(botAssembly => botAssembly.Id == robot.Id).MissilesInFlight <= MaxMissles)
             {
+                BotAssembly bot = Bots.Find(botAssembly => botAssembly.Id == robot.Id);
+
+                bot.MissilesInFlight++;
                 Missiles.Add(new Missile
                                       {
-                                          Id = 0, // TODO Do we really need an id? Could use parent bot id so we know who hit whom
+                                          Id = robot.Id,
                                           Speed = 100,
-                                          Location = new PointF {X = 0, Y = 0},
+                                          Location = new PointF {X = bot.Location.X, Y = bot.Location.Y},
                                           Direction = degree,
                                           Range = range
                                       });
@@ -360,6 +386,19 @@ namespace SharpRobotsEngine
             }
 
             return false;
+        }
+
+        #endregion
+
+        #region Method: RemoveDeadMissles
+
+        /// <summary>
+        /// Remove any dead missiles from our list
+        /// </summary>
+        private void RemoveDeadMissles()
+        {
+            List<Missile> missiles = Missiles.Where(missile => !missile.Dead).ToList();
+            Missiles = missiles;
         }
 
         #endregion
