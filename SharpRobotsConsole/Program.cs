@@ -133,6 +133,19 @@ namespace SharpRobotsConsole
             int botNum = 0;
             int yPos = 0;
 
+            foreach (var missile in _battleEngine.Missiles)
+            {
+                int x = (int)(missile.Location.X * _scaleX);
+                int y = (int)(missile.Location.Y * _scaleY);
+                int lastX = (int)(missile.LastLocation.X * _scaleX);
+                int lastY = (int)(missile.LastLocation.Y * _scaleY);
+
+                Console.SetCursorPosition(lastX, lastY);
+                Console.Write(" ");
+                Console.SetCursorPosition(x, y);
+                Console.Write("*");
+            }
+
             foreach (var bot in _battleEngine.Bots)
             {
                 int x = (int) (bot.Location.X * _scaleX);

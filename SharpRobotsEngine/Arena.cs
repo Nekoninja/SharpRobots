@@ -356,5 +356,22 @@ namespace SharpRobotsEngine
         }
 
         #endregion
+
+        #region Method: ReciprocalDegrees
+
+        /// <summary>
+        /// ReciprocalDegrees() returns the reciprocal degree of the given degree
+        /// </summary>
+        /// <param name="degrees"></param>
+        /// <returns></returns>
+        public static int ReciprocalDegrees(int degrees)
+        {
+            if (degrees >= 180)
+                return degrees - 180;
+
+            return degrees + 180;
+        }
+
+        #endregion
     }
 }

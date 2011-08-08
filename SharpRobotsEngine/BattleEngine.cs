@@ -105,7 +105,7 @@ namespace SharpRobotsEngine
         #region Properties
 
         public List<BotAssembly> Bots { get; set; }
-        public List<Missile> Missles { get; set; }
+        public List<Missile> Missiles { get; set; }
         public CompilerErrorCollection Errors { get; set; }
 
         #endregion
@@ -118,7 +118,7 @@ namespace SharpRobotsEngine
         public BattleEngine()
         {
             Bots = new List<BotAssembly>();
-            Missles = new List<Missile>();
+            Missiles = new List<Missile>();
             Arena.ArenaWidth = ArenaWidth + 1;
             Arena.ArenaHeight = ArenaHeight + 1;
             Arena.EngineInstance = this;
@@ -186,9 +186,23 @@ namespace SharpRobotsEngine
             double elapsedTime = gameTime - _lastTime;
             _lastTime = gameTime;
 
-            // TODO Add missiles
             // Update any missiles
+            foreach (var missile in Missiles)
+            {
+                missile.LastLocation = missile.Location;
 
+                // Update robot position based on the velocity
+                missile.Location.X += (float)Math.Sin(missile.Direction * Math.PI / 180) * missile.Speed * (float)elapsedTime;
+                missile.Location.Y += (float)Math.Cos(missile.Direction * Math.PI / 180) * missile.Speed * (float)elapsedTime;
+
+                // Fix the robot position to not leave the Arena
+                if (missile.Location.X < 0) missile.Location.X = 0;
+                if (missile.Location.X > ArenaWidth - 1) missile.Location.X = ArenaWidth - 1;
+                if (missile.Location.Y < 0) missile.Location.Y = 0;
+                if (missile.Location.Y > ArenaHeight - 1) missile.Location.Y = ArenaHeight - 1;
+            }
+
+            // Update bots
             foreach (var bot in Bots)
             {
                 totalDamage += bot.Damage;
@@ -214,8 +228,7 @@ namespace SharpRobotsEngine
                     //    bot.LastSpeed = bot.Speed;
                     //}
 
-                    bot.LastLocation.X = bot.Location.X;
-                    bot.LastLocation.Y = bot.Location.Y;
+                    bot.LastLocation = bot.Location;
 
                     // Update robot position based on the velocity
                     bot.Location.X += (float) Math.Sin(bot.Direction*Math.PI/180)*bot.Speed*(float) elapsedTime;
@@ -260,14 +273,45 @@ namespace SharpRobotsEngine
         /// <returns></returns>
         public int Scan(Robot robot, int degree, int resolution)
         {
+            // TODO Fix to wrap degrees degree < 0 degree > 360 modulo 360
             if (degree < 0) degree = 0;
             if (degree > 359) degree = 359;
             if (resolution < 0) resolution = 0;
             if (resolution > 10) resolution = 10;
-            Bots.Find(botAssembly => botAssembly.Id == robot.Id).ScanDirection = degree;
-            Bots.Find(botAssembly => botAssembly.Id == robot.Id).ScanResolution = resolution;
 
-            // TODO Given direction and resolution, determine if a bot is out there
+            BotAssembly botAssembly = Bots.Find(ba => ba.Id == robot.Id);
+            botAssembly.ScanDirection = degree;
+            botAssembly.ScanResolution = resolution;
+
+            foreach (var bot in Bots)
+            {
+                if (bot != botAssembly)
+                {
+                    // Plot a course from this bot to the given methods bot
+                    int course = Arena.PlotCourse((int)bot.Location.X, 
+                                                  (int)bot.Location.Y,
+                                                  (int)botAssembly.Location.X,
+                                                  (int)botAssembly.Location.Y);
+
+                    // Given the Scan resolution ( +/- 10 degrees maximum )
+                    // does the reciprocal degrees fall onto our course?
+                    // TODO Fix up the degree start and end to be within 0-360
+                    int degStart = degree - resolution;
+                    int degEnd = degree + resolution;
+                    for (int res = degStart; res <= degEnd; ++res)
+                    {
+                        if (Arena.ReciprocalDegrees(course) == res)
+                        {
+                            // Return the range to the discovered target
+                            return Math.Abs(Arena.Distance((int)bot.Location.X,
+                                                           (int)bot.Location.Y,
+                                                           (int)botAssembly.Location.X,
+                                                           (int)botAssembly.Location.Y));
+                        }
+                    }
+                }
+            }
+
             return 0;
         }
 
@@ -294,7 +338,7 @@ namespace SharpRobotsEngine
         /// <returns></returns>
         public bool FireCannon(Robot robot, int degree, int range)
         {
-            // TODO Finish the method
+            // TODO Fix to wrap degrees degree < 0 degree > 360 modulo 360
             if (degree < 0) degree = 0;
             if (degree > 359) degree = 359;
             if (range < 0) range = 0;
@@ -303,7 +347,7 @@ namespace SharpRobotsEngine
             // TODO Determine where to start the missile in relation to the bot that fired it
             if (Bots.Find(botAssembly => botAssembly.Id == robot.Id).MissilesInFlight <= MaxMissles)
             {
-                Missles.Add(new Missile
+                Missiles.Add(new Missile
                                       {
                                           Id = 0, // TODO Do we really need an id? Could use parent bot id so we know who hit whom
                                           Speed = 100,
@@ -311,6 +355,8 @@ namespace SharpRobotsEngine
                                           Direction = degree,
                                           Range = range
                                       });
+
+                return true;
             }
 
             return false;
