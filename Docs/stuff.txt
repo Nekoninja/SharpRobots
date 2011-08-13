@@ -21,3 +21,9 @@ http://necrobones.com/atrobots/
 2D motion
 http://channel9.msdn.com/coding4fun/articles/Upgrade-Your-Game-TinyTennis-C
 
+
+Situation	Damage
+Collision against the wall or an enemy (the engine off)	2%
+Missile that falls to 40 meters	3%
+Missile that falls to 20 meters	5%
+Missile that falls to 5 meters	10%
