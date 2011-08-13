@@ -214,6 +214,7 @@ namespace SharpRobotsEngine
                 {
                     // Explode the missile
                     // TODO Determine any damage to bots in the area
+                    // Iterate each robot. Get range to this missile. If in damage range, apply the damage.
 
                     // Update the bot that fired the missile
                     Missile missile1 = missile;

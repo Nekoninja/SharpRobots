@@ -157,7 +157,7 @@ namespace SharpRobotsConsole
                 Console.SetCursorPosition(lastX, lastY);
                 Console.Write(" ");
                 Console.SetCursorPosition(x, y);
-                Console.Write("O");
+                Console.Write(botNum + 1);
 
                 // Bot info
                 Console.SetCursorPosition(ArenaWidth + 1, yPos);
