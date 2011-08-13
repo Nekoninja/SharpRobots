@@ -373,11 +373,10 @@ namespace SharpRobotsEngine
             if (range < 0) range = 0;
             if (range > 700) range = 700;
 
-            // TODO Determine where to start the missile in relation to the bot that fired it
-            if (Bots.Find(botAssembly => botAssembly.Id == robot.Id).MissilesInFlight <= MaxMissles)
-            {
-                BotAssembly bot = Bots.Find(botAssembly => botAssembly.Id == robot.Id);
+            BotAssembly bot = Bots.Find(botAssembly => botAssembly.Id == robot.Id);
 
+            if (bot.MissilesInFlight <= MaxMissles)
+            {
                 bot.MissilesInFlight++;
                 Missiles.Add(new Missile
                                       {
@@ -512,27 +511,29 @@ namespace SharpRobotsEngine
         {
             MethodInfo mi = compilerResults.CompiledAssembly.GetType(Namespace + "." + className).GetMethod(ExecuteMethod);
             MethodBody mb = mi.GetMethodBody();
+
+            if (null == mb) return;
+
+            // Display the general information included in the MethodBody object.
             Trace.WriteLine(String.Format("\r\nMethod: {0}", mi));
+            Trace.WriteLine(String.Format("    Local variables are initialized: {0}", mb.InitLocals));
+            Trace.WriteLine(String.Format("    Maximum number of items on the operand stack: {0}", mb.MaxStackSize));
 
-            if (null != mb)
+            // Display information about the local variables in the method body.
+            foreach (LocalVariableInfo lvi in mb.LocalVariables)
+                Trace.WriteLine(String.Format("Local variable: {0}", lvi));
+
+            int bytesWritten = 0;
+            byte[] msil = mb.GetILAsByteArray();
+            Trace.WriteLine("IL Code");
+
+            foreach (var b in msil)
             {
-                // Display the general information included in the MethodBody object.
-                Trace.WriteLine(String.Format("    Local variables are initialized: {0}", mb.InitLocals));
-                Trace.WriteLine(String.Format("    Maximum number of items on the operand stack: {0}", mb.MaxStackSize));
-
-                // Display information about the local variables in the method body.
-                Console.WriteLine();
-                foreach (LocalVariableInfo lvi in mb.LocalVariables)
-                    Trace.WriteLine(String.Format("Local variable: {0}", lvi));
-
-                byte[] msil = mb.GetILAsByteArray();
-                Trace.WriteLine("IL Code");
-                foreach (var b in msil)
-                {
-                    Trace.Write(b);
-                    Trace.Write(" ");
-                }
+                Trace.Write(String.Format("{0} ", b.ToString("X4")));
+                if (++bytesWritten % 8 == 0) { Trace.WriteLine(""); }
             }
+
+            Trace.WriteLine("");
         }
 
         #endregion
