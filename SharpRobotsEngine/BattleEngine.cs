@@ -370,7 +370,7 @@ namespace SharpRobotsEngine
 
             BotAssembly bot = Bots.Find(botAssembly => botAssembly.Id == robot.Id);
 
-            if (bot.MissilesInFlight <= MaxMissles)
+            if (bot.MissilesInFlight < MaxMissles)
             {
                 bot.MissilesInFlight++;
                 Missiles.Add(new Missile
