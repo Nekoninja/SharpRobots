@@ -203,11 +203,10 @@ namespace SharpRobotsEngine
                 missile.Location.Y += (float)Math.Cos(missile.Direction * Math.PI / 180) * missile.Speed * (float)elapsedTime;
                 missile.Range -= Arena.Distance((int)missile.LastLocation.X, (int)missile.LastLocation.Y, (int)missile.Location.X, (int)missile.Location.Y);
 
-                // Fix the missiles position to not leave the Arena
-                if (missile.Location.X < 0) missile.Location.X = 0;
-                if (missile.Location.X > ArenaWidth - 1) missile.Location.X = ArenaWidth - 1;
-                if (missile.Location.Y < 0) missile.Location.Y = 0;
-                if (missile.Location.Y > ArenaHeight - 1) missile.Location.Y = ArenaHeight - 1;
+                // If a missile is leaving the arena, i.e. hitting a wall, explode it by setting it's range to 0
+                if (missile.Location.X < 0 || missile.Location.Y < 0 ||
+                    missile.Location.X > ArenaWidth - 1 || missile.Location.Y > ArenaHeight - 1)
+                    missile.Range = 0;
 
                 // Missile has reached it's defined range.
                 if (missile.Range <= 0)
