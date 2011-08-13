@@ -154,6 +154,7 @@ namespace SharpRobotsConsole
                 int lastX = (int)(bot.LastLocation.X * _scaleX);
                 int lastY = (int)(bot.LastLocation.Y * _scaleY);
 
+                // Update the robots position on screen
                 Console.SetCursorPosition(lastX, lastY);
                 Console.Write(" ");
                 Console.SetCursorPosition(x, y);
@@ -166,14 +167,16 @@ namespace SharpRobotsConsole
                 Console.Write(String.Format(" D% {0,3} Sc {1,3}", bot.Damage, bot.ScanDirection));
                 Console.SetCursorPosition(ArenaWidth + 1, yPos + 2);
                 Console.Write(String.Format(" Sp {0,3} Hd {1,3}", bot.Speed, bot.Direction));
+                Console.SetCursorPosition(ArenaWidth + 1, yPos + 4);
+                Console.WriteLine("------------------");
 
                 botNum++;
-                yPos += 5;
+                yPos += 6;
             }
 
             // Bottom info
             Console.SetCursorPosition(ArenaWidth + 1, ArenaHeight - 1);
-            Console.Write("Cycle: " + _cycles);
+            Console.Write("CPU Cycles: " + _cycles);
         }
 
         #endregion
