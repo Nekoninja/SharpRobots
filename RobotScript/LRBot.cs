@@ -14,6 +14,7 @@ namespace RobotScript
         #region Fields
 
         private int _nextDegree;
+        private int _resolution;
         private int Direction { get; set; }
 
         #endregion
@@ -28,6 +29,7 @@ namespace RobotScript
         public void Init()
         {
             Name = "LRBot";
+            _resolution = 5;
             Direction = 90;
         }
 
@@ -60,17 +62,21 @@ namespace RobotScript
             {
                 Direction = Direction == 90 ? 270 : 90;
                 Arena.Drive(this, Direction, 50);
-                //Trace(String.Format("Changing direction to {0}}", Direction));
                 Trace(String.Format("Changing direction to {0}", Direction));
             }
 
-            if ( (range = Arena.Scan(this, _nextDegree, 10)) > 0)
+            if ((range = Arena.Scan(this, _nextDegree, _resolution)) > 0)
             {
-                Arena.Cannon(this, _nextDegree, range);
-                Trace(String.Format("Firing Cannon at {0} degrees with a range of {1}", _nextDegree, range));
+                if (Arena.Cannon(this, _nextDegree, range))
+                {
+                    Trace(String.Format("Firing Cannon at {0} degrees with a range of {1} Scanner resolution {2}", _nextDegree, range, _resolution));
+                }
             }
 
             _nextDegree += 10;
+
+            if (_nextDegree > 359) _nextDegree = 0;
+            //Trace(String.Format("Next Degree: {0}", _nextDegree));
         }
 
         #endregion

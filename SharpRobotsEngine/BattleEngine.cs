@@ -102,6 +102,8 @@ namespace SharpRobotsEngine
         private const int ArenaHeight = 999;
         private const int MaxRobots = 4;
         private const int MaxMissles = 2;
+        private const int MaxScanRange = 700;
+        private const int MaxScanResolution = 10;
 
         #endregion
 
@@ -299,7 +301,7 @@ namespace SharpRobotsEngine
         {
             degree = DegreeTo360(degree);
             if (resolution < 0) resolution = 0;
-            if (resolution > 10) resolution = 10;
+            if (resolution > MaxScanResolution) resolution = MaxScanResolution;
 
             // Get the BotAssembly of the given robot from our list of robots
             BotAssembly botAssembly = Bots.Find(ba => ba.Id == robot.Id);
@@ -328,10 +330,13 @@ namespace SharpRobotsEngine
                         if (course == scanResolution)
                         {
                             // Return the range to the discovered target
-                            return Math.Abs(Arena.Distance((int)bot.Location.X,
-                                                           (int)bot.Location.Y,
-                                                           (int)botAssembly.Location.X,
-                                                           (int)botAssembly.Location.Y));
+                            int range = Math.Abs(Arena.Distance((int)bot.Location.X,
+                                                                (int)bot.Location.Y,
+                                                                (int)botAssembly.Location.X,
+                                                                (int)botAssembly.Location.Y));
+
+                            // Return the range to the discovered robot if distance is MaxScanRange or less
+                            return range >= MaxScanRange ? range : 0;
                         }
                     }
                 }
