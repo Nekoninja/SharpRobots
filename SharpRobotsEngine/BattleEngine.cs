@@ -203,7 +203,7 @@ namespace SharpRobotsEngine
                 missile.Location.Y += (float)Math.Cos(missile.Direction * Math.PI / 180) * missile.Speed * (float)elapsedTime;
                 missile.Range -= Arena.Distance((int)missile.LastLocation.X, (int)missile.LastLocation.Y, (int)missile.Location.X, (int)missile.Location.Y);
 
-                // Fix the robot position to not leave the Arena
+                // Fix the missiles position to not leave the Arena
                 if (missile.Location.X < 0) missile.Location.X = 0;
                 if (missile.Location.X > ArenaWidth - 1) missile.Location.X = ArenaWidth - 1;
                 if (missile.Location.Y < 0) missile.Location.Y = 0;
@@ -257,7 +257,7 @@ namespace SharpRobotsEngine
                     bot.Location.X += (float) Math.Sin(bot.Direction*Math.PI/180)*bot.Speed*(float) elapsedTime;
                     bot.Location.Y += (float) Math.Cos(bot.Direction*Math.PI/180)*bot.Speed*(float) elapsedTime;
 
-                    // Fix the robot position to not leave the Arena
+                    // Fix the robots position to not leave the Arena
                     if (bot.Location.X < 0) bot.Location.X = 0;
                     if (bot.Location.X > ArenaWidth - 1) bot.Location.X = ArenaWidth - 1;
                     if (bot.Location.Y < 0) bot.Location.Y = 0;
@@ -302,12 +302,17 @@ namespace SharpRobotsEngine
             if (resolution < 0) resolution = 0;
             if (resolution > 10) resolution = 10;
 
+            // Get the BotAssembly of the given robot from our list of robots
             BotAssembly botAssembly = Bots.Find(ba => ba.Id == robot.Id);
+
+            // Update these for display
             botAssembly.ScanDirection = degree;
             botAssembly.ScanResolution = resolution;
 
+            // Iterate all bots (Max of 4 bots in the game)
             foreach (var bot in Bots)
             {
+                // As long as it is not the given robot
                 if (bot != botAssembly)
                 {
                     // Plot a course from this bot to the given methods bot
@@ -316,14 +321,13 @@ namespace SharpRobotsEngine
                                                   (int)botAssembly.Location.X,
                                                   (int)botAssembly.Location.Y);
 
-                    // Given the Scan resolution ( +/- 10 degrees maximum )
-                    // does the reciprocal degrees fall onto our course?
+                    // Given the Scan resolution ( +/- 10 degrees maximum ) is there a bot out there?
                     // TODO Fix up the degree start and end to be within 0-360
                     int degStart = degree - resolution;
                     int degEnd = degree + resolution;
-                    for (int res = degStart; res <= degEnd; ++res)
+                    for (int scanResolution = degStart; scanResolution <= degEnd; ++scanResolution)
                     {
-                        if (Arena.ReciprocalDegrees(course) == res)
+                        if (course == scanResolution)
                         {
                             // Return the range to the discovered target
                             return Math.Abs(Arena.Distance((int)bot.Location.X,
@@ -335,6 +339,7 @@ namespace SharpRobotsEngine
                 }
             }
 
+            // No robot found
             return 0;
         }
 
