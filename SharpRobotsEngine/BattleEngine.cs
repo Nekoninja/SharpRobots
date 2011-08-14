@@ -336,7 +336,7 @@ namespace SharpRobotsEngine
                                                                 (int)botAssembly.Location.Y));
 
                             // Return the range to the discovered robot if distance is MaxScanRange or less
-                            return range >= MaxScanRange ? range : 0;
+                            return range;//range >= MaxScanRange ? range : 0;
                         }
                     }
                 }
