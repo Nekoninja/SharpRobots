@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("RobotScript")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Test assembly for creation of external robot scripts")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SF Games")]
 [assembly: AssemblyProduct("RobotScript")]

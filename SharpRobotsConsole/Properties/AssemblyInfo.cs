@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SharpRobotsConsole")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Sharp Robots Console Application")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SF Games")]
 [assembly: AssemblyProduct("SharpRobotsConsole")]
