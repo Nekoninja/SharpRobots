@@ -16,6 +16,7 @@ namespace RobotScript
         private int _nextDegree;
         private int _resolution;
         private int Direction { get; set; }
+        private const int MaxSpeed = 25;
 
         #endregion
 
@@ -53,15 +54,15 @@ namespace RobotScript
             // If speed is zero, start moving
             if (Arena.Speed(this) == 0)
             {
-                Arena.Drive(this, Direction, 50);
-                Trace("Bot sets speed to 50");
+                Arena.Drive(this, Direction, MaxSpeed);
+                Trace("Bot sets speed to 100");
             }
 
             // If about to hit a wall, change direction 180 degrees
             if (Arena.LocationX(this) < 50 || Arena.LocationX(this) > Arena.ArenaWidth - 50)
             {
                 Direction = Direction == 90 ? 270 : 90;
-                Arena.Drive(this, Direction, 50);
+                Arena.Drive(this, Direction, MaxSpeed);
                 Trace(String.Format("Changing direction to {0}", Direction));
             }
 

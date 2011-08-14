@@ -39,7 +39,7 @@ namespace SharpRobotsW
         {
             InitializeComponent();
 
-            _gameEventTimer = new Timer {Interval = 100, Enabled = true};
+            _gameEventTimer = new Timer {Interval = 35, Enabled = true};
             _gameEventTimer.Tick += NextGameFrame;
             _battleEngine = new BattleEngine();
 
