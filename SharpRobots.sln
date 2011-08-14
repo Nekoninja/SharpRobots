@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README = README
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpRobotsW", "SharpRobotsW\SharpRobotsW.csproj", "{383A5670-67CA-4141-971C-77F213E3D979}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,16 @@ Global
 		{3E5DF27B-7582-4E80-AB8C-6C064E2A4935}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{3E5DF27B-7582-4E80-AB8C-6C064E2A4935}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{3E5DF27B-7582-4E80-AB8C-6C064E2A4935}.Release|x86.ActiveCfg = Release|Any CPU
+		{383A5670-67CA-4141-971C-77F213E3D979}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{383A5670-67CA-4141-971C-77F213E3D979}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{383A5670-67CA-4141-971C-77F213E3D979}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{383A5670-67CA-4141-971C-77F213E3D979}.Debug|x86.ActiveCfg = Debug|x86
+		{383A5670-67CA-4141-971C-77F213E3D979}.Debug|x86.Build.0 = Debug|x86
+		{383A5670-67CA-4141-971C-77F213E3D979}.Release|Any CPU.ActiveCfg = Release|x86
+		{383A5670-67CA-4141-971C-77F213E3D979}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{383A5670-67CA-4141-971C-77F213E3D979}.Release|Mixed Platforms.Build.0 = Release|x86
+		{383A5670-67CA-4141-971C-77F213E3D979}.Release|x86.ActiveCfg = Release|x86
+		{383A5670-67CA-4141-971C-77F213E3D979}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
