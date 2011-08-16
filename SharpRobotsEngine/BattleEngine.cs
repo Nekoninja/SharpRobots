@@ -25,10 +25,23 @@ using System.Reflection;
 
 namespace SharpRobotsEngine
 {
+    #region Class: PointI
+
+    /// <summary>
+    /// 2D integer location
+    /// </summary>
+    public struct PointI
+    {
+        public int X;
+        public int Y;
+    }
+
+    #endregion
+
     #region Class: PointF
 
     /// <summary>
-    /// 2D Location
+    /// 2D float location
     /// </summary>
     public struct PointF
     {

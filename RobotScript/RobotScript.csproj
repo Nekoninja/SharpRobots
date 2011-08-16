@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CornerBot.cs" />
     <Compile Include="ExampleBot.cs" />
     <Compile Include="LRBot.cs" />
     <Compile Include="Sniper.cs" />
