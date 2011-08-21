@@ -37,8 +37,6 @@ namespace RobotScript
                     case 3: degrees = Arena.PlotCourse(Arena.LocationX(this), Arena.LocationY(this), _bottomRight.X, _bottomRight.Y); break;
                 }
 
-                degrees -= 90;
-
                 // Begin driving to the corner
                 Arena.Drive(this, degrees, 100);
                 _moving = true;

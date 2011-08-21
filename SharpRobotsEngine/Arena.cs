@@ -244,7 +244,7 @@ namespace SharpRobotsEngine
             double thetaRadians = Math.Atan2(y2 - y1, x2 - x1);
             double thetaDegrees = (thetaRadians + Math.PI) * 360.0 / (2.0 * Math.PI);
 
-            return (int)thetaDegrees;
+            return DegreeTo360((int)(thetaDegrees - 90));
         }
 
         #endregion
@@ -370,6 +370,24 @@ namespace SharpRobotsEngine
                 return degrees - 180;
 
             return degrees + 180;
+        }
+
+        #endregion
+
+        #region Method: DegreesTo360
+
+        /// <summary>
+        /// Fixes the given degrees to a positive value in the range 0-359
+        /// </summary>
+        /// <param name="degrees"></param>
+        /// <returns></returns>
+        public static int DegreeTo360(int degrees)
+        {
+            // If already in range >= 0 < 360, return the original degrees
+            if (degrees >= 0 && degrees < 360)
+                return degrees;
+
+            return Math.Abs(degrees) % 360;
         }
 
         #endregion

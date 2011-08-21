@@ -312,7 +312,7 @@ namespace SharpRobotsEngine
         /// <returns></returns>
         public int Scan(Robot robot, int degree, int resolution)
         {
-            degree = DegreeTo360(degree);
+            degree = Arena.DegreeTo360(degree);
             if (resolution < 0) resolution = 0;
             if (resolution > MaxScanResolution) resolution = MaxScanResolution;
 
@@ -336,8 +336,8 @@ namespace SharpRobotsEngine
                                                   (int)botAssembly.Location.Y);
 
                     // Given the Scan resolution ( +/- 10 degrees maximum ) is there a bot out there?
-                    int degStart = DegreeTo360(degree - resolution);
-                    int degEnd = DegreeTo360(degree + resolution);
+                    int degStart = Arena.DegreeTo360(degree - resolution);
+                    int degEnd = Arena.DegreeTo360(degree + resolution);
                     for (int scanResolution = degStart; scanResolution <= degEnd; ++scanResolution)
                     {
                         if (course == scanResolution)
@@ -382,7 +382,7 @@ namespace SharpRobotsEngine
         /// <returns></returns>
         public bool FireCannon(Robot robot, int degree, int range)
         {
-            degree = DegreeTo360(degree);
+            degree = Arena.DegreeTo360(degree);
             if (range < 0) range = 0;
             if (range > 700) range = 700;
 
@@ -404,24 +404,6 @@ namespace SharpRobotsEngine
             }
 
             return false;
-        }
-
-        #endregion
-
-        #region Method: DegreesTo360
-
-        /// <summary>
-        /// Fixes the given degrees to a positive value in the range 0-359
-        /// </summary>
-        /// <param name="degrees"></param>
-        /// <returns></returns>
-        private static int DegreeTo360(int degrees)
-        {
-            // If already in range >= 0 < 360, return the original degrees
-            if (degrees >= 0 && degrees < 360)
-                return degrees;
-
-            return Math.Abs(degrees) % 360;
         }
 
         #endregion
