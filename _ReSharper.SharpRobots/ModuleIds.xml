@@ -3,4 +3,5 @@
   <Module PersistentId="D7CAE670-8E62-45EA-AB43-0B91710E4FEE" ModuleId="SharpRobotsEngine" />
   <Module PersistentId="738343E8-4B93-41B7-B5A2-ABF4AC3EBE29" ModuleId="SharpRobotsConsole" />
   <Module PersistentId="3E5DF27B-7582-4E80-AB8C-6C064E2A4935" ModuleId="RobotScript" />
+  <Module PersistentId="28CA3C30-5879-43AD-B899-C6944E83126C" ModuleId="SharpRobotsXNA" />
 </Modules>
