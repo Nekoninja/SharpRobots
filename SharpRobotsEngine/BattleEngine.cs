@@ -501,8 +501,8 @@ namespace SharpRobotsEngine
         private static void Ininialize(ref BotAssembly bot, int id)
         {
             bot.Id = id;
-            bot.Location.X = Arena.Rand(ArenaWidth);
-            bot.Location.Y = Arena.Rand(ArenaHeight);
+            bot.Location.X = Arena.Rand(ArenaWidth)-1;
+            bot.Location.Y = Arena.Rand(ArenaHeight-1);
             bot.LastLocation.X = bot.Location.X;
             bot.LastLocation.Y = bot.Location.Y;
 

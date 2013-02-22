@@ -1,0 +1,15 @@
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsW\bin\Debug\SharpRobotsW.exe.config
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsW\bin\Debug\images\missile.png
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsW\bin\Debug\images\tank0.png
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsW\bin\Debug\SharpRobotsW.exe
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsW\bin\Debug\SharpRobotsW.pdb
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsW\bin\Debug\SharpRobotsEngine.dll
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsW\bin\Debug\SharpRobotsEngine.pdb
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsW\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsW\obj\x86\Debug\SharpRobotsW.AboutBox.resources
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsW\obj\x86\Debug\SharpRobotsW.MainForm.resources
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsW\obj\x86\Debug\SharpRobotsW.Properties.Resources.resources
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsW\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsW\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsW\obj\x86\Debug\SharpRobotsW.exe
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsW\obj\x86\Debug\SharpRobotsW.pdb

@@ -1,0 +1,5 @@
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsEngine\bin\Debug\SharpRobotsEngine.dll
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsEngine\bin\Debug\SharpRobotsEngine.pdb
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsEngine\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsEngine\obj\Debug\SharpRobotsEngine.dll
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsEngine\obj\Debug\SharpRobotsEngine.pdb

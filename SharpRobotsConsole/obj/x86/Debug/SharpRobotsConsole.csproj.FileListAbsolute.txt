@@ -1,0 +1,8 @@
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsConsole\bin\Debug\SharpRobotsConsole.exe.config
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsConsole\bin\Debug\SharpRobotsConsole.exe
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsConsole\bin\Debug\SharpRobotsConsole.pdb
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsConsole\bin\Debug\SharpRobotsEngine.dll
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsConsole\bin\Debug\SharpRobotsEngine.pdb
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsConsole\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsConsole\obj\x86\Debug\SharpRobotsConsole.exe
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsConsole\obj\x86\Debug\SharpRobotsConsole.pdb

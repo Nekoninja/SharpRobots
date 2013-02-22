@@ -1,0 +1,11 @@
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsXNA\SharpRobotsXNA\bin\x86\Debug\Content\missile.xnb
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsXNA\SharpRobotsXNA\bin\x86\Debug\Content\robot.xnb
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsXNA\SharpRobotsXNA\bin\x86\Debug\SharpRobotsXNA.exe.config
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsXNA\SharpRobotsXNA\bin\x86\Debug\SharpRobotsXNA.exe
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsXNA\SharpRobotsXNA\bin\x86\Debug\SharpRobotsXNA.pdb
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsXNA\SharpRobotsXNA\bin\x86\Debug\SharpRobotsEngine.dll
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsXNA\SharpRobotsXNA\bin\x86\Debug\SharpRobotsEngine.pdb
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsXNA\SharpRobotsXNA\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsXNA\SharpRobotsXNA\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsXNA\SharpRobotsXNA\obj\x86\Debug\SharpRobotsXNA.exe
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\SharpRobotsXNA\SharpRobotsXNA\obj\x86\Debug\SharpRobotsXNA.pdb

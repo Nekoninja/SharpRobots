@@ -1,0 +1,12 @@
+Robot 3 : LRBot : Bot sets speed to 50
+Robot 3 : LRBot : Firing Cannon at 20 degrees with a range of 477 Scanner resolution 5
+Robot 3 : LRBot : Firing Cannon at 20 degrees with a range of 477 Scanner resolution 5
+Robot 3 : LRBot : Firing Cannon at 20 degrees with a range of 477 Scanner resolution 5
+Robot 3 : LRBot : Firing Cannon at 20 degrees with a range of 477 Scanner resolution 5
+Robot 3 : LRBot : Firing Cannon at 10 degrees with a range of 447 Scanner resolution 5
+Robot 3 : LRBot : Firing Cannon at 20 degrees with a range of 462 Scanner resolution 5
+Robot 3 : LRBot : Changing direction to 270
+Robot 3 : LRBot : Firing Cannon at 20 degrees with a range of 477 Scanner resolution 5
+Robot 3 : LRBot : Firing Cannon at 20 degrees with a range of 477 Scanner resolution 5
+Robot 3 : LRBot : Firing Cannon at 20 degrees with a range of 477 Scanner resolution 5
+Robot 3 : LRBot : Firing Cannon at 20 degrees with a range of 477 Scanner resolution 5

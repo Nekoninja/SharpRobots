@@ -1,0 +1,7 @@
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\RobotScript\bin\Debug\RobotScript.dll
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\RobotScript\bin\Debug\RobotScript.pdb
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\RobotScript\bin\Debug\SharpRobotsEngine.dll
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\RobotScript\bin\Debug\SharpRobotsEngine.pdb
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\RobotScript\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\RobotScript\obj\Debug\RobotScript.dll
+C:\Users\frosenbaum\Documents\Projects\Other\asm48\SharpRobots\RobotScript\obj\Debug\RobotScript.pdb
