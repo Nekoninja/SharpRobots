@@ -14,8 +14,6 @@ own robot program, then matching their program against other programs.
 
 *************************
 NOTE that the current source code here is not complete in the sense
-that one could begin pitting robots against other robots.
-There are a number of items to complete before this could happen
-such as getting the robots to move in all proper directions, firing,
-and other core functionality. The code has been placed on github
-in order to play with and learn git.
+that one could begin pitting robots against other robots, except for
+the console project at this time.
+The code has been placed on github initially to learn git.
